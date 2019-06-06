@@ -1,0 +1,29 @@
+*,
+*:after,
+*:before
+	box-sizing: inherit
+	margin: 0;
+	padding: 0;
+
+html
+	box-sizing: border-box
+	font-size: $font-size
+
+// Default body styles
+body
+	color: $quinary
+	font-family: $sans-serif
+	font-size: $font-size
+	font-weight: 300
+	letter-spacing: .01em
+	line-height: 1.6
+	padding-top: $nav-height
+
+
+.dark
+	color: #eee
+	background-color: $quinary
+
+.screen
+	padding: 2rem
+	min-height: calc(100vh - #{$nav-height})

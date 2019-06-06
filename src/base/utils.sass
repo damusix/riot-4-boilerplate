@@ -1,0 +1,32 @@
+
+// Clear a float with .clearfix
+.clearfix
+
+	&:after
+		clear: both
+		content: ' ' // The space content is one way to avoid an Opera bug.
+		display: table
+
+// Float either direction
+.float-left
+	float: left
+
+.float-right
+	float: right
+
+
+.hide
+	display: none
+.block
+	display: block
+.inline-block
+	display: inline-block
+
+@media #{$mobile}
+
+	.mobile-hide
+		display: none
+	.mobile-block
+		display: block
+	.mobile-inline-block
+		display: inline-block

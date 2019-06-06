@@ -1,0 +1,26 @@
+<example>
+
+    <h3>
+        Example Component
+    </h3>
+
+    <button
+        onclick={ callApi }
+        disabled={ state.loading }
+        class="success"
+    >
+        <i class="fas fa-spinner fa-spin" if={ state.loading }></i>
+        Call API ({ state.apiCalls } calls)
+    </button>
+
+    <script>
+
+        export default {
+
+            callApi() {
+
+                this.actions.sampleApiCall(this.state.apiCalls);
+            }
+        }
+    </script>
+</example>

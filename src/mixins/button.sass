@@ -1,0 +1,55 @@
+@mixin button ($className, $color, $hover, $text, $text-hover)
+	#{$className}
+		color: $text
+		background-color: $color
+		border: .1rem solid $color
+
+		&:focus,
+		&:hover
+			background-color: $hover
+			border-color: $hover
+			outline: none
+			outline: 0
+
+		&[disabled]
+			cursor: default
+			opacity: .5
+
+			&:focus,
+			&:hover
+			background-color: $color
+            border-color: $color
+
+		&.outline
+			background-color: transparent
+			color: $color
+
+			&:focus,
+			&:hover
+				background-color: transparent
+				border-color: $hover
+				color: $hover
+
+			&[disabled]
+
+				&:focus,
+				&:hover
+					border-color: inherit
+					color: $color
+
+		&.clear
+			background-color: transparent
+			border-color: transparent
+			color: $color
+
+			&:focus,
+			&:hover
+				background-color: transparent
+				border-color: transparent
+				color: $hover
+
+			&[disabled]
+
+				&:focus,
+				&:hover
+					color: $color

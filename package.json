@@ -1,0 +1,43 @@
+{
+  "name": "riot-4-boilerplate",
+  "version": "1.0.0",
+  "description": "A complete starting point for Riot 4",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --watch --hot --colors -d --port 3000",
+    "build": "webpack",
+    "test": "mocha"
+  },
+  "keywords": [
+    "riot4",
+    "riot",
+    "boilerplate",
+    "scss",
+    "webpack"
+  ],
+  "author": "@damusix",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@riotjs/hot-reload": "^4.0.0",
+    "@riotjs/webpack-loader": "^4.0.0",
+    "animejs": "^3.0.1",
+    "axios": "^0.19.0",
+    "babel-loader": "^8.0.6",
+    "bianco": "^1.1.0",
+    "css-loader": "^2.1.1",
+    "erre": "^2.1.4",
+    "install": "^0.12.2",
+    "mini-css-extract-plugin": "^0.7.0",
+    "node-sass": "^4.12.0",
+    "npm": "^6.9.0",
+    "riot": "^4.0.8",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.6.0"
+  }
+}
