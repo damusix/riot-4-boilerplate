@@ -19,10 +19,13 @@ import './app.sass';
 import './components';
 
 // Pass state manage to actions
-const actions = Actions(StateManager);
+const actions = Actions(StateManager.stream);
 
 // Run screens action for mobile checks
 actions.screenChecks();
+
+// Start router
+actions.routerStart();
 
 // Rerun screen checks on resize
 events.add(global, 'resize', debounce(actions.screenChecks, 250));
@@ -31,18 +34,18 @@ events.add(global, 'resize', debounce(actions.screenChecks, 250));
 riot.install(function (component) {
 
     // Allows you to reference `this.state` and `this.actions` in components
-    component.state = state;
+    component.state = StateManager.state;
     component.actions = actions;
 
     // When state is updated, update component state.
-    StateManager.on.value((newState) => component.update(newState));
+    StateManager.stream.on.value((newState) => component.update(newState));
 });
 
 // Mount the App and expose state, actions, and the actual stream
 const mountApp = riot.component(App);
 
 mountApp(document.getElementById('root'), {
-    StateManager,
-    actions,
-    state
+    stream: StateManager.stream,
+    state: StateManager.state,
+    actions
 });

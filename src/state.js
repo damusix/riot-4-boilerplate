@@ -1,5 +1,6 @@
 // Using Erre as state management
 import Erre from 'erre';
+import Router from './router';
 
 // Initial state
 let state = {
@@ -20,4 +21,12 @@ const stream = Erre(function (update) {
     return state;
 });
 
-export default stream
+Router.subscribe((route, prevRoute) => {
+
+    stream.push({ ...route, prevRoute });
+
+    console.log('state', state);
+});
+
+
+export default { state, stream };
