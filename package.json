@@ -36,6 +36,7 @@
     "npm": "^6.9.0",
     "riot": "^4.0.8",
     "router5": "^7.0.2",
+    "router5-link-interceptor": "^3.1.0",
     "router5-plugin-browser": "^7.0.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

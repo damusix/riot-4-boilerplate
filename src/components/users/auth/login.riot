@@ -1,0 +1,38 @@
+<login>
+
+    <form onsubmit={ onSubmit }>
+
+        <div class="field">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" />
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" />
+        </div>
+
+        <button>
+            <i class="fa fa-signin"></i>
+            Login
+        </button>
+    </form>
+
+
+    <script>
+
+        export default {
+
+            onSubmit(e) {
+
+                e.preventDefault();
+                const { username, password } = e.target.elements;
+
+                this.actions.login({
+                    username: username.value,
+                    password: password.value,
+                });
+            }
+        }
+    </script>
+</login>

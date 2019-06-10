@@ -2,44 +2,25 @@
 
     <h1>Sample Riot 4 App</h1>
 
-    <h3>This boilerplate comes with:</h3>
-    <ul>
-        <li>SASS boilerplate based on <a href="http://milligram.io">Milligram IO</a></li>
-        <li><a href="https://github.com/biancojs/bianco">BiancoJS</a></li>
-        <li><a href="https://animejs.com/">AnimeJS</a></li>
-        <li><a href="http://fontawesome.io">Fontawesome 5</a></li>
-        <li><a href="https://github.com/axios/axios">AxiosJS</a></li>
-        <li>Streaming state management</li>
-        <li>Webpack Hot reloading</li>
-    </ul>
+    <app-nav />
 
-    <hr>
+    <section id="auth" if={ inRoute('auth') }>
 
-    <section id="test">
-        <p><i>Try this:</i> Resize your browser to phone size</p>
-        <p><b>isMobile:</b> { state.isMobile }</p>
-
-
-        <p><i>Try this:</i> Change the input to change state value</p>
-        <p><b>Component Value:</b> { state.componentAction }</p>
-        <input
-            id="action"
-            type="text"
-            placeholder="Set component value..."
-            onkeyup={ setAction }
-        />
-
+        <login if={ isRoute('auth.login') }></login>
+        <register if={ isRoute('auth.register') }></register>
     </section>
 
-    <hr>
+    <example if={ isRoute('example') } />
+    <try-this if={ isRoute('try-this') } />
+    <comes-with if={ isRoute('comes-with') } />
 
-    <example></example>
+    <footer>
+        <a href="/try-this">Try this!</a>
+        <a href="/comes-with">What does this boilerplate comes with?</a>
+    </footer>
 
     <script>
         export default {
-            setAction(e) {
-                this.actions.componentAction(e.target.value);
-            }
         }
     </script>
 </app>

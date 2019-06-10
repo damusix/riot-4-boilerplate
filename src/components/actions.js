@@ -1,5 +1,6 @@
 import ScrollLinks from './links/scroll';
 import ExampleActions from './example/actions';
+import UsersActions from './users/actions';
 
 export default (stream) => ({
 
@@ -13,5 +14,6 @@ export default (stream) => ({
         ScrollLinks.bind();
     },
 
-    ...ExampleActions(stream)
+    ...ExampleActions(stream),
+    ...UsersActions(stream)
 });

@@ -1,0 +1,28 @@
+<try-this>
+
+    <section id="test">
+        <p><i>Try this:</i> Resize your browser to phone size</p>
+        <p><b>isMobile:</b> { state.isMobile }</p>
+
+
+        <p><i>Try this:</i> Change the input to change state value</p>
+        <p><b>Component Value:</b> { state.componentAction }</p>
+        <input
+            id="action"
+            type="text"
+            placeholder="Set component value..."
+            onkeyup={ setAction }
+        />
+
+    </section>
+
+
+    <script>
+
+        export default {
+            setAction(e) {
+                this.actions.componentAction(e.target.value);
+            }
+        }
+    </script>
+</try-this>

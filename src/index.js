@@ -3,11 +3,14 @@ import events from 'bianco.events';
 
 import { debounce } from './utils';
 
-// Import state manage
+// Import state manager
 import StateManager from './state';
 
 // Import actions from main actions file
 import Actions from './actions';
+
+// Import route helpers for Riot
+import RoutePlugin from './router/plugin';
 
 // Import main riot app
 import App from './app.riot';
@@ -40,6 +43,8 @@ riot.install(function (component) {
     // When state is updated, update component state.
     StateManager.stream.on.value((newState) => component.update(newState));
 });
+
+riot.install(RoutePlugin);
 
 // Mount the App and expose state, actions, and the actual stream
 const mountApp = riot.component(App);

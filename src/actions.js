@@ -23,8 +23,6 @@ export default (stream) => ({
         Router.start((err, route) => {
 
             stream.push({ route });
-
-            console.log(route);
         });
     },
 

@@ -18,10 +18,17 @@ export const routerOptions = {
 // https://github.com/router5/router5/tree/master/packages/router5-plugin-browser
 export const browserPluginOptions = {
     forceDeactive: true,
-    useHash: true,
-    hashPrefix: '',
-    base: '/',
-    preserveHash: true,
-    mergeState: false
+    mergeState: false,
+
+    // // Uncomment the following to use hash router, eg: "#/login"
+    // useHash: true,
+    // hashPrefix: '',
+    // base: '/',
+    // preserveHash: true,
 };
 
+// https://github.com/jas-chen/router5-link-interceptor
+// https://router5.js.org/guides/navigating
+export const linkInterceptorOptions = {
+    push: true
+}

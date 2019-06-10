@@ -5,6 +5,7 @@ import Router from './router';
 // Initial state
 let state = {
     componentAction: null,
+    authenticated: false,
     isMobile: null,
     loading: false,
     apiCalls: 0
@@ -21,9 +22,9 @@ const stream = Erre(function (update) {
     return state;
 });
 
-Router.subscribe((route, prevRoute) => {
+Router.subscribe((route) => {
 
-    stream.push({ ...route, prevRoute });
+    stream.push({ ...route });
 
     console.log('state', state);
 });
