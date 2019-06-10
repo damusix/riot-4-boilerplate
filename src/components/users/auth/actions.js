@@ -1,5 +1,12 @@
-export default (stream) => ({
+export default (stream, state, actions) => ({
 
+    redirectHomeIfAuth() {
+
+        if (state().authenticated) {
+
+            actions.navigate('home');
+        }
+    },
     login(payload) {
 
         stream.push({ loading: true });
@@ -8,7 +15,8 @@ export default (stream) => ({
 
             stream.push({
                 authenticated: true,
-                loading: false
+                loading: false,
+                ...payload
             });
         }, 1000);
     },
@@ -20,7 +28,8 @@ export default (stream) => ({
 
             stream.push({
                 authenticated: true,
-                loading: false
+                loading: false,
+                ...payload
             });
         }, 1000);
     },

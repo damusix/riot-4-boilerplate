@@ -2,9 +2,9 @@
 import UserActions from './user/actions';
 import AuthActions from './auth/actions';
 
-export default (stream) => ({
+export default (stream, state, actions) => ({
 
     getAllUsers: () => {},
-    user: { ...UserActions(stream) },
-    auth: { ...AuthActions(stream) }
+    user: { ...UserActions(stream, state, actions) },
+    auth: { ...AuthActions(stream, state, actions) }
 });

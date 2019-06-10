@@ -2,10 +2,11 @@ import ScrollLinks from './links/scroll';
 import ExampleActions from './example/actions';
 import UsersActions from './users/actions';
 
-export default (stream) => ({
+export default (stream, state, actions) => ({
 
     componentAction: (status) => {
 
+        console.log(actions);
         stream.push({ componentAction: status });
     },
 
@@ -14,6 +15,6 @@ export default (stream) => ({
         ScrollLinks.bind();
     },
 
-    ...ExampleActions(stream),
-    ...UsersActions(stream)
+    ...ExampleActions(stream, state, actions),
+    ...UsersActions(stream, state, actions)
 });

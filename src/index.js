@@ -23,7 +23,7 @@ import './app.sass';
 import './components';
 
 // Pass state manage to actions
-const actions = Actions(StateManager.stream);
+const actions = Actions(StateManager.stream, StateManager.getState);
 
 // Run screens action for mobile checks
 actions.screenChecks();
@@ -33,6 +33,15 @@ actions.routerStart();
 
 // Rerun screen checks on resize
 events.add(global, 'resize', debounce(actions.screenChecks, 250));
+
+if (storage.length) {
+
+    const storageState = storage
+        .map((key, val) => ({ [key]: val }))
+        .reduce((acc, cur) => Object.assign(acc,cur), {});
+
+    StateManager.state.push(storageState);
+}
 
 // Expose globals inside components
 riot.install(function (component) {

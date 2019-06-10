@@ -12,8 +12,8 @@
             <input type="password" name="password" id="password" />
         </div>
 
-        <button>
-            <i class="fa fa-signin"></i>
+        <button disabled={ state.loading }>
+            <i class="fas { buttonIcon() }"></i>
             Login
         </button>
     </form>
@@ -23,15 +23,36 @@
 
         export default {
 
+            buttonIcon() {
+
+                if (this.state.loading) {
+
+                    return 'fa-spinner fa-spin'
+                }
+
+                return 'fa-sign-in-alt'
+            },
+
             onSubmit(e) {
 
                 e.preventDefault();
                 const { username, password } = e.target.elements;
 
-                this.actions.login({
+                this.actions.auth.login({
                     username: username.value,
                     password: password.value,
                 });
+            },
+
+            onBeforeMount() {
+
+                const self = this;
+                this.actions.auth.redirectHomeIfAuth()
+            },
+
+            onUpdated() {
+
+                this.actions.auth.redirectHomeIfAuth()
             }
         }
     </script>

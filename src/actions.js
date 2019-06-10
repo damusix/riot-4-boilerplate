@@ -4,28 +4,34 @@ import viewport from 'bianco.viewport';
 import Router from './router';
 
 // Generic actions store
-export default (stream) => ({
+export default (stream, state) => {
 
-    screenChecks () {
+    // Set generic actions
+    const actions = {
 
-        stream.push({
-            isMobile: viewport.documentWidth() < 16 * 40 // 640 px
-        });
-    },
+        screenChecks () {
 
-    navigate(...args) {
+            stream.push({
+                isMobile: viewport.documentWidth() < 16 * 40 // 640 px
+            });
 
-        Router.navigate(...args);
-    },
+            console.log(this);
+        },
 
-    routerStart() {
+        navigate(...args) {
 
-        Router.start((err, route) => {
+            Router.navigate(...args);
+        },
 
-            stream.push({ route });
-        });
-    },
+        routerStart() {
 
-    // Splat component actions into main actions store
-    ...ComponentActions(stream)
-});
+            Router.start((err, route) => {
+
+                stream.push({ route });
+            });
+        },
+    };
+
+    // Pass actions to child actions
+    return Object.assign(actions, ComponentActions(stream, state, actions));
+};

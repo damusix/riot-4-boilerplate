@@ -26,7 +26,7 @@
     "animejs": "^3.0.1",
     "axios": "^0.19.0",
     "babel-loader": "^8.0.6",
-    "better-web-storage": "^0.1.1",
+    "better-web-storage": "^0.1.2",
     "bianco": "^1.1.0",
     "css-loader": "^2.1.1",
     "erre": "^2.1.4",

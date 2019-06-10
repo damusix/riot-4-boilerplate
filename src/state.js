@@ -22,6 +22,8 @@ const stream = Erre(function (update) {
     return state;
 });
 
+const getState = () => state;
+
 Router.subscribe((route) => {
 
     stream.push({ ...route });
@@ -30,4 +32,4 @@ Router.subscribe((route) => {
 });
 
 
-export default { state, stream };
+export default { state, stream, getState };
