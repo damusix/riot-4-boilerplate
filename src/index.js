@@ -2,6 +2,7 @@ import * as riot from 'riot';
 import events from 'bianco.events';
 
 import { debounce } from './utils';
+import storage from './utils/storage';
 
 // Import state manager
 import StateManager from './state';
@@ -33,24 +34,25 @@ actions.routerStart();
 // Rerun screen checks on resize
 events.add(global, 'resize', debounce(actions.screenChecks, 250));
 
-// Install riot plugin to expose global state and actions in components
+// Expose globals inside components
 riot.install(function (component) {
 
     // Allows you to reference `this.state` and `this.actions` in components
     component.state = StateManager.state;
     component.actions = actions;
+    component.stream = StateManager.stream;
 
     // When state is updated, update component state.
     StateManager.stream.on.value((newState) => component.update(newState));
+
+    // Access local storage from any component
+    component.storage = storage;
 });
 
+// Route helpers
 riot.install(RoutePlugin);
 
 // Mount the App and expose state, actions, and the actual stream
 const mountApp = riot.component(App);
 
-mountApp(document.getElementById('root'), {
-    stream: StateManager.stream,
-    state: StateManager.state,
-    actions
-});
+mountApp(document.getElementById('root'));

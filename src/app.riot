@@ -1,8 +1,8 @@
 <app>
 
-    <h1>Sample Riot 4 App</h1>
-
     <app-nav />
+
+    <h1>Sample Riot 4 App</h1>
 
     <section id="auth" if={ inRoute('auth') }>
 
@@ -14,8 +14,9 @@
     <try-this if={ isRoute('try-this') } />
     <comes-with if={ isRoute('comes-with') } />
 
+    <current-state />
+
     <footer>
-        <a href="/try-this">Try this!</a>
         <a href="/comes-with">What does this boilerplate comes with?</a>
     </footer>
 

@@ -21,5 +21,6 @@ export default [
             { name: 'view', path: '/:id' },
             { name: 'list', path: '/list' }
         ]
-    }
+    },
+    { name: '404', path: '/not-found' }
 ];

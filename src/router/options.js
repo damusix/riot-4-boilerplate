@@ -2,7 +2,7 @@
 export const routerOptions = {
     allowNotFound: false,
     autoCleanUp: true,
-    defaultRoute: '/',
+    defaultRoute: '404',
     defaultParams: {},
     queryParams: {
         arrayFormat: 'default',
