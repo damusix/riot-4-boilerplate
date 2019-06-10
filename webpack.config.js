@@ -3,6 +3,11 @@ const CssExtract = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: ['@babel/polyfill', './src/index.js'],
+    devServer: {
+        historyApiFallback: {
+            index: 'index.html'
+        }
+    },
     output: {
         path: Path.resolve(__dirname, 'public'),
         publicPath: '/public/',
