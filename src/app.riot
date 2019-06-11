@@ -1,13 +1,14 @@
 <app>
 
-    <app-nav />
+    <app-nav class="grid" />
 
     <h1>Sample Riot 4 App</h1>
 
     <section id="auth" if={ inRoute('auth') }>
 
-        <login if={ isRoute('auth.login') }></login>
-        <register if={ isRoute('auth.register') }></register>
+        <login if={ isRoute('auth.login') } />
+        <register if={ isRoute('auth.register') } />
+        <reset-password-request if={ isRoute('auth.reset-request') } />
     </section>
 
     <example if={ isRoute('example') } />

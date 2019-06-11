@@ -1,11 +1,36 @@
 <app-nav>
 
-    <a href="/login" class="{ activeOn('auth.login') }">Login</a>
-    <a href="/example" class="{ activeOn('example') }">Example</a>
-    <a href="/try-this" class="{ activeOn('try-this') }">Try this!</a>
+    <nav id="left" class="col w-50">
+        <a href="/example" class="{ activeOn('example') }">Example</a>
+        <a href="/try-this" class="{ activeOn('try-this') }">Try this!</a>
+    </nav>
+
+    <nav id="right" class="col w-50 text-right">
+        <a if={ !state.authenticated } href="/login" class="{ activeOn('auth.login') }">Login</a>
+        <a if={ !state.authenticated } href="/register" class="{ activeOn('auth.register') }">Register</a>
+        <a if={ state.authenticated }
+           onclick={ actions.auth.logout }
+           disabled={ state.loading }
+        >
+            <i class="fas { buttonIcon() }"></i>
+            Logout
+        </a>
+    </nav>
 
     <script>
 
-        export default {}
+        export default {
+
+            buttonIcon() {
+
+                if (this.state.loading) {
+
+                    return 'fa-spinner fa-spin'
+                }
+
+                return 'fa-sign-out-alt'
+            },
+
+        }
     </script>
 </app-nav>

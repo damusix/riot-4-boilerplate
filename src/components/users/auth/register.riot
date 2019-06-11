@@ -1,3 +1,64 @@
 <register>
 
+    <form onsubmit={ onSubmit }>
+
+        <div class="field">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" />
+        </div>
+
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" />
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" />
+        </div>
+
+        <button disabled={ state.loading }>
+            <i class="fas { buttonIcon() }"></i>
+            Register
+        </button>
+
+        <hr>
+
+        <auth-links register={ true } />
+    </form>
+
+
+    <script>
+
+        export default {
+
+            buttonIcon() {
+
+                if (this.state.loading) {
+
+                    return 'fa-spinner fa-spin'
+                }
+
+                return 'fa-user-plus'
+            },
+
+            onMounted() {
+
+                this.$('input#username').focus();
+                this.actions.auth.redirectHomeIfAuth();
+            },
+
+            onSubmit(e) {
+
+                e.preventDefault();
+                const { username, email, password } = e.target.elements;
+
+                this.actions.auth.register({
+                    username: username.value,
+                    email: email.value,
+                    password: password.value,
+                });
+            }
+        }
+    </script>
 </register>

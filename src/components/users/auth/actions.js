@@ -1,3 +1,5 @@
+import storage from '../../../utils/storage';
+
 export default (stream, state, actions) => ({
 
     redirectHomeIfAuth() {
@@ -19,6 +21,8 @@ export default (stream, state, actions) => ({
                 ...payload
             });
 
+            storage.set('authenticated', true);
+
             actions.navigate('home');
         }, 1000);
     },
@@ -34,7 +38,24 @@ export default (stream, state, actions) => ({
                 ...payload
             });
 
+            storage.set('authenticated', true);
+
             actions.navigate('home');
+        }, 1000);
+    },
+    logout() {
+
+        stream.push({ loading: true });
+
+        setTimeout(() => {
+
+            stream.push({
+                authenticated: false,
+                loading: false
+            });
+            storage.rmv('authenticated');
+
+            actions.navigate('auth.login');
         }, 1000);
     },
     requestReset(payload) {},

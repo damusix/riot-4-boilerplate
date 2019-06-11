@@ -23,6 +23,15 @@ import './app.sass';
 // Import everything inside components
 import './components';
 
+if (storage.length) {
+
+    const storageState = storage
+        .map((key, val) => ({ [key]: val }))
+        .reduce((acc, cur) => Object.assign(acc,cur), {});
+
+    StateManager.mergeState(storageState);
+}
+
 // Pass state manage to actions
 const actions = Actions(StateManager.stream, StateManager.getState);
 
@@ -35,14 +44,6 @@ actions.routerStart();
 // Rerun screen checks on resize
 events.add(global, 'resize', debounce(actions.screenChecks, 250));
 
-if (storage.length) {
-
-    const storageState = storage
-        .map((key, val) => ({ [key]: val }))
-        .reduce((acc, cur) => Object.assign(acc,cur), {});
-
-    StateManager.state.push(storageState);
-}
 
 // Expose globals inside components
 riot.install(function (component) {

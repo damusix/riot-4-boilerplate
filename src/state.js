@@ -11,8 +11,8 @@ let state = {
     apiCalls: 0
 };
 
-// Create streaming state
-const stream = Erre(function (update) {
+const getState = () => state;
+const mergeState = function (update) {
 
     state = {
         ...state,
@@ -20,16 +20,16 @@ const stream = Erre(function (update) {
     };
 
     return state;
-});
+}
 
-const getState = () => state;
+// Create streaming state
+const stream = Erre(mergeState);
+
 
 Router.subscribe((route) => {
 
     stream.push({ ...route });
-
-    console.log('state', state);
 });
 
 
-export default { state, stream, getState };
+export default { state, stream, getState, mergeState };

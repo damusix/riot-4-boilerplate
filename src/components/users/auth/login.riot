@@ -16,6 +16,11 @@
             <i class="fas { buttonIcon() }"></i>
             Login
         </button>
+
+        <hr>
+
+        <auth-links login={ true } />
+
     </form>
 
 
@@ -31,6 +36,12 @@
                 }
 
                 return 'fa-sign-in-alt'
+            },
+
+            onMounted() {
+
+                this.$('input#username').focus();
+                this.actions.auth.redirectHomeIfAuth();
             },
 
             onSubmit(e) {
