@@ -8,6 +8,7 @@ Starting point for working with Riot 4. This boilerplate comes with:
 - [Fontawesome 5](http://fontawesome.io)
 - [AxiosJS](https://github.com/axios/axios)
 - Streaming state management using [Erre](https://github.com/GianlucaGuarini/erre)
+- Routing using [Router5](https://router5.js.org)
 - Webpack Hot reloading
 
 ## Usage
@@ -27,47 +28,33 @@ npm run build
 
 ## Structure
 
-```bash
-├── index.html
-├── package-lock.json
-├── package.json
-├── public
-│   └── img
-├── readme.md
-├── src
-│   ├── _vars.sass
-│   ├── actions.js
-│   ├── app.riot
-│   ├── app.sass
-│   ├── base
-│   │   ├── base.sass
-│   │   ├── buttons.sass
-│   │   ├── code.sass
-│   │   ├── forms.sass
-│   │   ├── grid.sass
-│   │   ├── index.sass
-│   │   ├── spacing.sass
-│   │   ├── typography.sass
-│   │   └── utils.sass
-│   ├── components
-│   │   ├── actions.js
-│   │   ├── example
-│   │   │   ├── actions.js
-│   │   │   ├── example.riot
-│   │   │   └── style.sass
-│   │   ├── index.js
-│   │   ├── index.sass
-│   │   └── links
-│   │       └── scroll.js
-│   ├── index.js
-│   ├── mixins
-│   │   ├── button.sass
-│   │   ├── columns.sass
-│   │   └── index.sass
-│   └── utils
-│       └── index.js
-└── webpack.config.js
-```
+### State
+
+State is initialized in `src/state.js` along with helper functions shared across the app
+
+### Router
+
+Router is based on [Router5](https://router5.js.org). Read about it and learn how it implmements state.
+
+- Route instance is defined and imported from `src/router`.
+- Routes are declared in `src/router/routes.js`.
+- Route rules (such as auth redirect) are declared in `src/router/rules.js`. Permissions can also be baked into this file.
+- Options can be adjusted in `src/router/options.js`
+- Riot route helpers are found in `src/router/plugin.js`
+
+
+##### Route Helpers
+
+Available in all components
+
+- *isRoute(name)*: Check if on current route
+- *inRoute(name)*: Check if is a component of a parent route (eg: auth)
+- *activeOn(name)*: Set active class if on specific route
+- *activeIn(name)*: Set active class if is a component of a parent route (eg: auth)
+- *isPath(name)*: Check if path
+- *hasParam(param)*: Check if path has a parameter
+- *wasRoute(name)*: Check if was immediately on previous route
+- *wasPath(name)*: Check if was immediately on previous path
 
 ### Components
 
@@ -113,11 +100,21 @@ Actions would follow the following schema:
 ```js
 import ComponentActions from './components/actions';
 
-export default (stream) => ({
+// First actions function takes no parent actions
+// Only takes stream and state
+export default (stream, state) => {
 
-    someAction: () => {},
-    ...ComponentActions(stream)
-});
+    // Set generic actions
+    const actions = {
+
+        aGlobalAction: () => {},
+        someOtherAction: () => {}
+    };
+
+    // Pass stream, state, actions to child actions
+    return Object.assign(actions, ComponentActions(stream, state, actions));
+};
+
 ```
 
 ##### `src/components/actions.js`
@@ -125,10 +122,10 @@ export default (stream) => ({
 ```js
 import UsersActions from './components/users/actions';
 
-export default (stream) => ({
+export default (stream, state, actions) => ({
 
     someComponentAction: () => {},
-    ...UsersActions(stream)
+    ...UsersActions(stream, state, actions)
 });
 ```
 
@@ -139,11 +136,11 @@ export default (stream) => ({
 import UserActions from './components/users/user/actions';
 import AuthActions from './components/users/auth/actions';
 
-export default (stream) => ({
+export default (stream, state, actions) => ({
 
     getAllUsers: () => {},
-    user: { ...UserActions(stream) },
-    auth: { ...AuthActions(stream) }
+    user: { ...UserActions(stream, state, actions) },
+    auth: { ...AuthActions(stream, state, actions) }
 });
 ```
 
@@ -181,7 +178,7 @@ Mixins belong in `src/mixins` folder and are declared inside `src/mixins/index.s
 Components' styles are stored in `src/components/{componentName}/style.sass`. This keeps all the component's styles in 1 place and maintains a separation of concerns. Those files are brought into `src/components/index.sass`.
 
 ## TODO
-- [ ] Router mechanism
+- [x] Router mechanism
 - [ ] Form states
 - [ ] Button states
 - [ ] Setup tests
