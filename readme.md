@@ -11,6 +11,25 @@ Starting point for working with Riot 4. This boilerplate comes with:
 - Routing using [Router5](https://router5.js.org)
 - Webpack Hot reloading
 
+## Table of Contents
+
+* [Usage](#usage)
+* [Structure](#structure)
+    * [State](#state)
+    * [Router](#router)
+        * [Route states](#route-states)
+        * [Route Helpers](#route-helpers)
+    * [Components](#components)
+    * [Riot Templates](#riot-templates)
+    * [Actions](#actions)
+        * [src/actions.js](#srcactionsjs)
+        * [src/components/actions.js](#srccomponentsactionsjs)
+        * [src/components/users/actions.js](#srccomponentsusersactionsjs)
+    * [SASS Structure](#sass-structure)
+* [TODO](#todo)
+
+---
+
 ## Usage
 
 ```
