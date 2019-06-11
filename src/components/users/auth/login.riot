@@ -42,17 +42,6 @@
                     username: username.value,
                     password: password.value,
                 });
-            },
-
-            onBeforeMount() {
-
-                const self = this;
-                this.actions.auth.redirectHomeIfAuth()
-            },
-
-            onUpdated() {
-
-                this.actions.auth.redirectHomeIfAuth()
             }
         }
     </script>

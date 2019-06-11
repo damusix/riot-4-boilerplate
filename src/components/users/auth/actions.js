@@ -18,6 +18,8 @@ export default (stream, state, actions) => ({
                 loading: false,
                 ...payload
             });
+
+            actions.navigate('home');
         }, 1000);
     },
     register(payload) {
@@ -31,6 +33,8 @@ export default (stream, state, actions) => ({
                 loading: false,
                 ...payload
             });
+
+            actions.navigate('home');
         }, 1000);
     },
     requestReset(payload) {},

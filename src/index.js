@@ -12,6 +12,7 @@ import Actions from './actions';
 
 // Import route helpers for Riot
 import RoutePlugin from './router/plugin';
+import RouterRules from './router/rules';
 
 // Import main riot app
 import App from './app.riot';
@@ -60,6 +61,7 @@ riot.install(function (component) {
 
 // Route helpers
 riot.install(RoutePlugin);
+RouterRules(StateManager.getState, actions);
 
 // Mount the App and expose state, actions, and the actual stream
 const mountApp = riot.component(App);
