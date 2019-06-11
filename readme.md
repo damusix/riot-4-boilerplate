@@ -34,7 +34,7 @@ State is initialized in `src/state.js` along with helper functions shared across
 
 ### Router
 
-Router is based on [Router5](https://router5.js.org). Read about it and learn how it implmements state.
+Router is based on [Router5](https://router5.js.org). Read about it and learn how it implements state.
 
 - Route instance is defined and imported from `src/router`.
 - Routes are declared in `src/router/routes.js`.
@@ -42,6 +42,41 @@ Router is based on [Router5](https://router5.js.org). Read about it and learn ho
 - Options can be adjusted in `src/router/options.js`
 - Riot route helpers are found in `src/router/plugin.js`
 
+##### Route states
+
+Route state are passed to app state as `route` and `previousRoute`. Route states look like this:
+
+```
+{
+    ...
+
+    "route": {
+        "name": "example",
+        "params": {},
+        "path": "/example",
+        "meta": {
+        "params": {
+            "example": {}
+        },
+        "options": {
+            "push": true
+        },
+        "id": 3
+        }
+    },
+    "previousRoute": {
+        "name": "home",
+        "params": {},
+        "path": "/",
+        "meta": {
+        "params": {
+            "home": {}
+        },
+        "id": 1
+        }
+    }
+}
+```
 
 ##### Route Helpers
 
