@@ -49,7 +49,28 @@ npm run build
 
 ### State
 
-State is initialized in `src/state.js` along with helper functions shared across the app
+State is initialized in `src/state.js` along with helper functions shared across the app. The following example is how you can use it as a module:
+
+```js
+const StateManager = require('./state');
+
+// Get current state
+const state = StateManager.getState();
+
+// Update directly
+StateManager.mergeState({ newState: true });
+
+// Update using state stream
+StateManager.stream.push({ updatedVia: 'stream' });
+
+// Update using state stream
+StateManager.stream.push(async () => await thingsToHappen());
+
+// Listen for changes to stream
+StateManager.stream.on.value((newState) => console.log(newState));
+```
+
+You can read more about the stream library on [Erre's API](https://github.com/GianlucaGuarini/erre). This is an implementation of [meiosis pattern](http://meiosis.js.org/) - Meiosis is a design pattern that implements state management using streams. I am implementing meiosis against foxdonut's recommended setup and going with an all-in Riot implementation using the libraries created by GianlucaGuarini, creator of Riot.
 
 ### Router
 
@@ -112,22 +133,17 @@ Available in all components
 
 ### Components
 
-Componets are declared inside of `src/components/` and, when relevant, should contain the following main items:
+Componets are declared as folders inside of `src/components/` and, when relevant, should contain the following main items:
 - `style.sass`
 - `actions.js`
 - `component.riot`
 
-### Riot Templates
-
-Riot templates should be brought into `src/components/index.js`. All riot components should be registered here as follows:
-
-```js
-import Example1 from './example1/example.riot';
-import Example2 from './example2/example.riot';
-
-riot.register('example1', Example1);
-riot.register('example2', Example2);
-```
+The convention this implementation is following is as follows:
+- Keep all things related to the component inside the component folder, including styles and actions
+- Register components to Riot in `src/components/index.js` in order to keep things in 1 place
+    - If there ever is a component group that scales out and clutters `src/component/index.js`, then a more appropriate flow would be to use `src/components/massiveParentComponent/index.js` to register riot components, and simply import `index` into main components.
+    - Repeat this pattern in nested sub-components so to keep the exact same, predictable structure. It will help keep things organized.
+    - See `src/components/users` for an example
 
 ### Actions
 

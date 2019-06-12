@@ -12,6 +12,7 @@ let state = {
 };
 
 const getState = () => state;
+
 const mergeState = function (update) {
 
     state = {

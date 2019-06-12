@@ -10,7 +10,6 @@ import CurrentState from './example/current-state.riot';
 import './users';
 
 riot.register('app-nav', AppNav);
-
 riot.register('example', Example);
 riot.register('comes-with', ComesWith);
 riot.register('try-this', TryThis);
