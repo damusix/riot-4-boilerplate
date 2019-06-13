@@ -18,7 +18,15 @@ input[type='submit']
 	text-decoration: none
 	text-transform: uppercase
 	white-space: nowrap
+	transition: all 250ms
+	box-shadow: 0 0 0 0 rgba(#000, 0)
+
+	&:hover, &:focus
+		box-shadow: 0 0 7px 0 rgba(#000, 0.5)
 
 
-	@include button("&", $primary, $secondary, #fff, $quinary)
-	@include button("&.success", $success, #333, #fff, #fff)
+	@include button("&", $primary, #fff)
+	@include button("&.success", $success, #fff)
+	@include button("&.error", $error, #fff)
+	@include button("&.warning", $warning, #fff)
+	@include button("&.info", $info, #fff)

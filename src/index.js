@@ -16,6 +16,7 @@ import RouterRules from './router/rules';
 
 // Import main riot app
 import App from './app.riot';
+import NotFound from './404.riot';
 
 // Import sass entrypoint
 import './app.sass';
@@ -49,7 +50,7 @@ events.add(global, 'resize', debounce(actions.screenChecks, 250));
 riot.install(function (component) {
 
     // Allows you to reference `this.state` and `this.actions` in components
-    component.state = StateManager.state;
+    Object.assign(component.state, StateManager.state);
     component.actions = actions;
     component.stream = StateManager.stream;
 
@@ -63,6 +64,8 @@ riot.install(function (component) {
 // Route helpers
 riot.install(RoutePlugin);
 RouterRules(StateManager.getState, actions);
+
+riot.register('not-found', NotFound);
 
 // Mount the App and expose state, actions, and the actual stream
 const mountApp = riot.component(App);

@@ -1,4 +1,7 @@
-@mixin button ($className, $color, $hover, $text, $text-hover)
+@mixin button ($className, $color, $text)
+
+	$hover: mix($color, #333, 50%)
+
 	#{$className}
 		color: $text
 		background-color: $color
@@ -11,6 +14,7 @@
 			outline: none
 			outline: 0
 
+
 		&[disabled]
 			cursor: default
 			opacity: .5
@@ -18,7 +22,7 @@
 			&:focus,
 			&:hover
 			background-color: $color
-            border-color: $color
+			border-color: $color
 
 		&.outline
 			background-color: transparent

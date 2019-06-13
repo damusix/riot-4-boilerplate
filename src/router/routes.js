@@ -2,7 +2,6 @@
 export default [
     { name: 'home', path: '/' },
     { name: 'try-this', path: '/try-this' },
-    { name: 'comes-with', path: '/comes-with' },
     { name: 'example', path: '/example' },
     {
         name: 'auth',

@@ -9,20 +9,31 @@ app-nav
 
     padding: 0 1rem
 
-    background: $quaternary
+    background: #333
+
+    box-shadow: 1px 2px 4px 0 rgba(#000, 0.35)
+    border-bottom: 3px solid #000
 
     a, a .fas
-        line-height: $nav-height
+        line-height: ($font-size * 4) - 3px
 
 
     a
         color: $tertiary
         display: inline-block
         padding: 0 1rem
+        vertical-align: top
 
-        &:hover, &:active
-            background-color: rgba(0,0,0,0.2)
+        &:hover, &:active, &:focus
+            color: #fff
+            background-color: rgba(0,0,0,0.5)
+            border: none
 
         &.active
-            background-color: $primary
+            background-color: #000
+            border-bottom: 3px solid $primary
 
+    nav#left
+        img
+            height: $nav-height
+            padding: 1rem

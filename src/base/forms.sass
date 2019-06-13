@@ -18,15 +18,31 @@ select
 	background-color: transparent
 	border: .1rem solid $tertiary
 	border-radius: .4rem
-	box-shadow: none
+	box-shadow: 0px 0px 0px 0 rgba($primary, 25%)
 	box-sizing: inherit // Forced to replace inherit values of the normalize.css
 	height: 3.8rem
 	padding: .6rem 1.0rem // The .6rem vertically centers text on FF, ignored by Webkit
 	width: 100%
+	transition: all 250ms
+	font-size: 1rem
+
+	&::placeholder
+		color: rgba($quinary, 0.35)
+
+	&:focus, &:hover
+		box-shadow: 0px 0px 7px 0 rgba(#444, 0.5)
 
 	&:focus
-		border-color: $primary
+		border-color: mix($primary, $tertiary, 30%)
 		outline: 0
+
+	&:disabled
+		&, &:focus, &:hover
+			background: #ccc
+			border-color: #aaa
+			box-shadow: none
+			cursor: not-allowed
+
 
 select
 	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="%23d1d1d1" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>') center right no-repeat
@@ -57,3 +73,9 @@ input[type='radio']
 	display: inline-block
 	font-weight: normal
 	margin-left: .5rem
+
+.field
+	@include formState("&.success", $success)
+	@include formState("&.error", $error)
+	@include formState("&.warning", $warning)
+	@include formState("&.info", $info)
