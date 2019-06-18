@@ -5,7 +5,8 @@ import { debounce } from './utils';
 import storage from './utils/storage';
 
 // Import state manager
-import StateManager from './state';
+import * as StateManager from './state';
+import StatePlugin from './state/plugin';
 
 // Import actions from main actions file
 import Actions from './actions';
@@ -43,19 +44,17 @@ actions.screenChecks();
 actions.routerStart();
 
 // Rerun screen checks on resize
-events.add(global, 'resize', debounce(actions.screenChecks, 250));
+events.add(global, 'resize', debounce(actions.screenChecks, 100));
 
+// Install state plugin for access to streams and for
+// component updates when stream updates.
+riot.install(StatePlugin);
 
 // Expose globals inside components
 riot.install(function (component) {
 
-    // Allows you to reference `this.state` and `this.actions` in components
-    Object.assign(component.state, StateManager.state);
+    // Access actions from components
     component.actions = actions;
-    component.stream = StateManager.stream;
-
-    // When state is updated, update component state.
-    StateManager.stream.on.value((newState) => component.update(newState));
 
     // Access local storage from any component
     component.storage = storage;

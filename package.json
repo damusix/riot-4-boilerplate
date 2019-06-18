@@ -29,7 +29,7 @@
     "better-web-storage": "^0.1.2",
     "bianco": "^1.1.0",
     "css-loader": "^2.1.1",
-    "erre": "^2.1.4",
+    "erre": "^2.2.0",
     "install": "^0.12.2",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
