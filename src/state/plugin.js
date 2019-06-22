@@ -22,6 +22,9 @@ export default function (component) {
         ...getState()
     };
 
+    // Allow getting current state
+    component.getState = getState;
+
     // clone the main stream and link in case you need local updates in your component
     component.stream = Erre.clone(stream);
 

@@ -13,10 +13,6 @@
         export default {
 
             state: { isOpen: true },
-            onMounted() {
-
-                console.log(this.state);
-            },
             onToggle() {
 
                 this.update({ isOpen: !this.state.isOpen });

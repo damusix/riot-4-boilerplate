@@ -6,7 +6,6 @@ export default (stream, state, actions) => ({
 
     componentAction: (status) => {
 
-        console.log(actions);
         stream.push({ componentAction: status });
     },
 

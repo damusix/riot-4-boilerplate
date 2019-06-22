@@ -14,8 +14,6 @@ export default (stream, state) => {
             stream.push({
                 isMobile: viewport.documentWidth() < 16 * 40 // 640 px
             });
-
-            console.log(this);
         },
 
         navigate(...args) {
