@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline --watch --hot --colors -d --port 3000",
     "build": "webpack",
-    "test": "mocha"
+    "test": "mocha -r @babel/register -r ./init-tests.js --reporter mochawesome --recursive",
+    "tdd": "nodemon -w test -x 'npm run test'"
   },
   "keywords": [
     "riot4",
@@ -17,10 +18,16 @@
   ],
   "author": "@damusix",
   "license": "MIT",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "dependencies": {
     "@babel/core": "^7.4.5",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
     "@riotjs/hot-reload": "^4.0.0",
     "@riotjs/webpack-loader": "^4.0.0",
     "animejs": "^3.0.1",
@@ -28,10 +35,13 @@
     "babel-loader": "^8.0.6",
     "better-web-storage": "^0.1.2",
     "bianco": "^1.1.0",
+    "chai": "^4.2.0",
     "css-loader": "^2.1.1",
     "erre": "^2.2.0",
     "install": "^0.12.2",
     "mini-css-extract-plugin": "^0.7.0",
+    "mocha": "^6.1.4",
+    "mochawesome": "^4.0.1",
     "node-sass": "^4.12.0",
     "npm": "^6.9.0",
     "riot": "^4.0.8",
@@ -43,5 +53,9 @@
     "webpack": "^4.33.0",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.6.0"
+  },
+  "devDependencies": {
+    "jsdom": "15.1.1",
+    "jsdom-global": "3.0.2"
   }
 }
