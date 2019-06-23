@@ -251,6 +251,7 @@ Components' styles are stored in `src/components/{componentName}/style.sass`. Th
 - [x] Router mechanism
 - [x] Form states
 - [x] Button states
-- [ ] Setup tests
+- [x] Setup tests
+- [ ] Write tests for current workflow
 - [ ] Improve documentation
 - [ ] Create site
