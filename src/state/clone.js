@@ -11,6 +11,7 @@ const CHILDREN = Symbol('children');
 
 // function called only the first time a source stream will be cloned
 function init(source) {
+
    const children = new Set();
    source[CHILDREN] = children;
    // dispatch the new values to all the connected pipes

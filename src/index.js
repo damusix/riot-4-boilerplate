@@ -44,7 +44,7 @@ actions.screenChecks();
 actions.routerStart();
 
 // Rerun screen checks on resize
-events.add(global, 'resize', debounce(actions.screenChecks, 100));
+events.add(global.window, 'resize', debounce(actions.screenChecks, 100));
 
 // Install state plugin for access to streams and for
 // component updates when stream updates.
