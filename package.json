@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --inline --watch --hot --colors -d --port 3000",
     "build": "webpack",
     "test": "mocha -r @babel/register -r @babel/polyfill -r ./test/register.js -r ignore-styles --reporter mochawesome --recursive",
-    "tdd": "nodemon -w test -x 'npm run test'"
+    "tdd": "nodemon -e js,riot -w test -w src -x 'npm run test'"
   },
   "keywords": [
     "riot4",

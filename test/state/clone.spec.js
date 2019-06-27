@@ -9,7 +9,8 @@ describe('Erre clone plugin', function () {
 
     it('should install as erre plugin without errors', function () {
 
-        Erre.install('clone', Clone);
+        // Check if not installed because of import
+        !Erre.clone && Erre.install('clone', Clone);
 
         expect(Erre.clone).to.be.a('function');
     });
@@ -32,13 +33,21 @@ describe('Erre clone plugin', function () {
         });
 
         expect(stub.stream).to.not.equal(stub.stream2);
+
+        // Prep next test
+        stub.stream.push('test');
     });
 
     it('should pass streams from parent function to child function', async function () {
 
-        await stub.stream.push('test');
+        expect(stub.streamVals).to.contain.members(stub.stream2Vals);
+    });
 
-        console.log(stub.streamVals)
-        console.log(stub.stream2Vals)
+    it('should remove clones when main stream ends', function () {
+
+        expect(stub.stream.children.size).to.eq(1);
+        stub.stream.end();
+        expect(stub.stream.children.size).to.eq(0);
+
     });
 });
