@@ -1,10 +1,5 @@
+import { getStream } from 'riot-meiosis';
 
-import UserActions from './user/actions';
-import AuthActions from './auth/actions';
+const stream = getStream();
 
-export default (stream, state, actions) => ({
 
-    getAllUsers: () => {},
-    user: { ...UserActions(stream, state, actions) },
-    auth: { ...AuthActions(stream, state, actions) }
-});

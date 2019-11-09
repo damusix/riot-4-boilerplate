@@ -1,63 +1,71 @@
+import { getStream } from 'riot-meiosis';
+
 import storage from '../../../utils/storage';
 
-export default (stream, state, actions) => ({
+const stream = getStream();
 
-    redirectHomeIfAuth() {
 
-        if (state().authenticated) {
+export function redirectHomeIfAuth() {
 
-            actions.navigate('home');
-        }
-    },
-    login(payload) {
+    if (state().authenticated) {
 
-        stream.push({ loading: true });
+        actions.navigate('home');
+    }
+};
 
-        setTimeout(() => {
+export function login(payload) {
 
-            stream.push({
-                authenticated: true,
-                loading: false,
-                ...payload
-            });
+    stream.push({ loading: true });
 
-            storage.set('authenticated', true);
+    setTimeout(() => {
 
-            actions.navigate('home');
-        }, 1000);
-    },
-    register(payload) {
+        stream.push({
+            authenticated: true,
+            loading: false,
+            ...payload
+        });
 
-        stream.push({ loading: true });
+        storage.set('authenticated', true);
 
-        setTimeout(() => {
+        actions.navigate('home');
+    }, 1000);
+};
 
-            stream.push({
-                authenticated: true,
-                loading: false,
-                ...payload
-            });
+export function register(payload) {
 
-            storage.set('authenticated', true);
+    stream.push({ loading: true });
 
-            actions.navigate('home');
-        }, 1000);
-    },
-    logout() {
+    setTimeout(() => {
 
-        stream.push({ loading: true });
+        stream.push({
+            authenticated: true,
+            loading: false,
+            ...payload
+        });
 
-        setTimeout(() => {
+        storage.set('authenticated', true);
 
-            stream.push({
-                authenticated: false,
-                loading: false
-            });
-            storage.rmv('authenticated');
+        actions.navigate('home');
+    }, 1000);
+};
 
-            actions.navigate('auth.login');
-        }, 1000);
-    },
-    requestReset(payload) {},
-    resetPassword(payload) {},
-});
+export function logout() {
+
+    stream.push({ loading: true });
+
+    setTimeout(() => {
+
+        stream.push({
+            authenticated: false,
+            loading: false
+        });
+        storage.rmv('authenticated');
+
+        actions.navigate('auth.login');
+    }, 1000);
+};
+
+export function requestReset(payload) {};
+
+export function resetPassword(payload) {};
+

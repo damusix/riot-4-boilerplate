@@ -1,15 +1,16 @@
-export default (stream) => ({
+import { getStream } from 'riot-meiosis';
 
-    sampleApiCall: (apiCalls = 0) => {
+const stream = getStream();
 
-        stream.push({ loading: true });
-        setTimeout(() => {
+export const sampleApiCall = (apiCalls = 0) => {
 
-            ++apiCalls
-            stream.push({
-                apiCalls,
-                loading: false
-            });
-        }, 1000);
-    }
-});
+    stream.push({ loading: true });
+    setTimeout(() => {
+
+        ++apiCalls
+        stream.push({
+            apiCalls,
+            loading: false
+        });
+    }, 1000);
+}

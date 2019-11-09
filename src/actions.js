@@ -1,35 +1,11 @@
-import ComponentActions from './components/actions';
+import { getStream } from 'riot-meiosis';
 import viewport from 'bianco.viewport';
 
-import Router from './router';
+const stream = getStream();
 
-// Generic actions store
-export default (stream, state) => {
+export function screenChecks () {
 
-    // Set generic actions
-    const actions = {
-
-        screenChecks () {
-
-            stream.push({
-                isMobile: viewport.documentWidth() < 16 * 40 // 640 px
-            });
-        },
-
-        navigate(...args) {
-
-            Router.navigate(...args);
-        },
-
-        routerStart() {
-
-            Router.start((err, route) => {
-
-                stream.push({ route });
-            });
-        },
-    };
-
-    // Pass actions to child actions
-    return Object.assign(actions, ComponentActions(stream, state, actions));
+    stream.push({
+        isMobile: viewport.documentWidth() < 16 * 40 // 640 px
+    });
 };

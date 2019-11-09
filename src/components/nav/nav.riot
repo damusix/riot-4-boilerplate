@@ -21,7 +21,10 @@
 
     <script>
 
-        export default {
+        import { connect } from 'riot-meiosis';
+        import withRouter from '../../router/withRouter';
+
+        export default withRouter(connect(state => state)({
 
             buttonIcon() {
 
@@ -33,6 +36,6 @@
                 return 'fa-sign-out-alt'
             },
 
-        }
+        }))
     </script>
 </app-nav>

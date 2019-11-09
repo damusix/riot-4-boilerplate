@@ -30,7 +30,10 @@
 
     <script>
 
-        export default {
+        import { connect } from 'riot-meiosis';
+        import { redirectHomeIfAuth, register } from './actions'
+
+        export default connect(state => state)({
 
             buttonIcon() {
 
@@ -45,7 +48,7 @@
             onMounted() {
 
                 this.$('input#username').focus();
-                this.actions.auth.redirectHomeIfAuth();
+                redirectHomeIfAuth();
             },
 
             onSubmit(e) {
@@ -53,12 +56,12 @@
                 e.preventDefault();
                 const { username, email, password } = e.target.elements;
 
-                this.actions.auth.register({
+                register({
                     username: username.value,
                     email: email.value,
                     password: password.value,
                 });
             }
-        }
+        });
     </script>
 </register>

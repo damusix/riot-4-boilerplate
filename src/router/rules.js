@@ -3,9 +3,8 @@ import Router from '.';
 /**
  * Adds route rules
  * @param {function} state State accessor
- * @param {object} actions Actions object
  */
-export default function (state, actions) {
+export default function (state) {
 
     /**
      * RULE: Redirect to home page if authenticated.

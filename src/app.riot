@@ -18,7 +18,13 @@
     <current-state />
 
     <script>
-        export default {
-        }
+        import { connect } from 'riot-meiosis';
+        import { withRouter } from './router';
+
+        const mapToState = state => ({
+            ...state.route
+        })
+
+        export default withRouter(connect(mapToState)({}))
     </script>
 </app>
