@@ -1,9 +1,10 @@
 import { createStream } from 'riot-meiosis';
+import Observable from 'riot-observable';
 
 const initialState = {
-    componentAction: null,
+    componentAction: '',
     authenticated: false,
-    isMobile: null,
+    isMobile: false,
     loading: false,
     apiCalls: 0
 };
@@ -14,3 +15,5 @@ const reducer = (newState, oldState) => ({
 });
 
 createStream(reducer, initialState);
+
+export const events = Observable();
