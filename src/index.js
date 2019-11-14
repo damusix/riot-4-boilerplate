@@ -16,7 +16,8 @@ import './app.sass';
 // Import everything inside components
 import './components';
 
-import * as actions from './actions';
+// Initialize actions
+import './actions';
 
 const stream = getStream();
 
@@ -28,8 +29,6 @@ if (storage.length) {
 
     stream.push(storageState);
 }
-
-console.log(RMDevTools);
 
 [
     ['router', Router],

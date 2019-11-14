@@ -1,0 +1,33 @@
+<test-component>
+
+    <h1>test component</h1>
+    <p>{ state.message }</p>
+    <button onclick={ updateMessage }></button>
+
+    <script>
+
+        import { connect, getState } from 'riot-meiosis';
+        import withEvents from '#/withEvents';
+
+        const mapToState = (appState, ownState) => ({
+            ...ownState,
+            ...appState
+        });
+
+        const component = {
+            state: { pepe: true },
+            onBeforeMount(props, state) {
+
+            },
+            onMounted() {
+
+                this.on('paginate', () => this.update({ paginated: true }));
+            },
+            updateMessage() {
+
+                this.update({ message: 'wow!' });
+            }
+        }
+        export default withEvents(connect(mapToState)(component));
+    </script>
+</test-component>
