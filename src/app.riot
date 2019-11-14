@@ -1,30 +1,34 @@
 <app>
 
-    <app-nav class="grid" />
 
-    <section id="auth" if={ inRoute('auth') }>
+    <router>
+        <app-nav class="grid" />
 
-        <login if={ isRoute('auth.login') } />
-        <register if={ isRoute('auth.register') } />
-        <reset-password-request if={ isRoute('auth.reset-request') } />
-    </section>
+        <route path="/auth/:action">
+            <section id="auth">
 
-    <comes-with if={ isRoute('home') } />
-    <example if={ isRoute('example') } />
-    <try-this if={ isRoute('try-this') } />
+                <route path="/auth/login"><login } /></route>
+                <route path="/auth/register"><register /></route>
+                <route path="/auth/reset"><reset-password-request /></route>
+            </section>
+        </route>
 
-    <not-found if={ isRoute('404') } />
+        <route path="/"><comes-with /></route>
+        <route path="/example"><example /></route>
+        <route path="/try-this"><try-this /></route>
+    </route>
 
-    <current-state />
+    <!--  <not-found if={ isRoute('404') } />  -->
+
+    <rmdevtools />
 
     <script>
         import { connect } from 'riot-meiosis';
-        import { withRouter } from './router';
 
         const mapToState = state => ({
             ...state.route
         })
 
-        export default withRouter(connect(mapToState)({}))
+        export default connect(mapToState)({})
     </script>
 </app>

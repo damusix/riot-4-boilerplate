@@ -1,5 +1,6 @@
 const Path = require('path');
 const CssExtract = require('mini-css-extract-plugin');
+const { DefinePlugin } = require('webpack');
 
 const paths = {
     app: Path.resolve(__dirname, 'src'),
@@ -10,11 +11,17 @@ const mode = ['production', 'development'].includes(process.env.NODE_ENV)
     ? process.env.NODE_ENV
     : 'development';
 
+const entry = [
+    '@babel/polyfill',
+    Path.resolve(paths.app, 'index.js')
+];
+
 module.exports = {
-    entry: [
-        '@babel/polyfill',
-        Paths.resolve(paths.app, 'index.js')
-    ],
+    entry,
+    mode,
+    optimization: {
+        concatenateModules: false
+    },
     devServer: {
         historyApiFallback: {
             index: 'index.html'
@@ -35,11 +42,13 @@ module.exports = {
         publicPath: '/public/',
         filename: 'app.js'
     },
-    mode,
     devtool: 'source-map',
     plugins: [
         new CssExtract({
             filename: 'app.css'
+        }),
+        new DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         })
     ],
     module: {

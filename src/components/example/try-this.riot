@@ -20,10 +20,14 @@
 
     <script>
 
-        export default {
+        import { connect } from 'riot-meiosis';
+        import { componentAction } from '@/actions';
+
+        export default connect(state => state)({
+
             setAction(e) {
-                this.actions.componentAction(e.target.value);
+                componentAction(e.target.value);
             }
-        }
+        })
     </script>
 </try-this>

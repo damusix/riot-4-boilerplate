@@ -2,16 +2,18 @@ import { add } from 'bianco.events';
 import viewport from 'bianco.viewport';
 import { $ } from 'bianco';
 import { getStream } from 'riot-meiosis';
-import { debounce } from 'underscore/debounce';
+import { debounce } from 'underscore';
 
 import KeyCodes from '#/keycodes';
 import { events } from './store';
 
 const stream = getStream();
 
-export const lock = () => $('body')[0].style.overflow = 'hidden';
+export const lock = (el) => (el || document.body).style.overflow = 'hidden';
+export const unlock = (el) => (el || document.body).style.overflow = '';
 
-export const unlock = () => $('body')[0].style.overflow = '';
+events.on('lock', lock);
+events.on('unlock', unlock);
 
 export const getScreens = debounce(() => {
 
@@ -27,6 +29,8 @@ export const getScreens = debounce(() => {
 
     stream.push(screens);
 }, 100);
+
+getScreens();
 
 
 // On ready

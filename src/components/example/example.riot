@@ -15,12 +15,16 @@
 
     <script>
 
-        export default {
+
+        import { connect } from 'riot-meiosis';
+        import { sampleApiCall } from './actions';
+
+        export default connect(state => state)({
 
             callApi() {
 
-                this.actions.sampleApiCall(this.state.apiCalls);
+                sampleApiCall(this.state.apiCalls);
             }
-        }
+        })
     </script>
 </example>

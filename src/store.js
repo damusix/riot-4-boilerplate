@@ -1,4 +1,4 @@
-import { createStream } from 'riot-meiosis';
+import { createStream, getStream } from 'riot-meiosis';
 import Observable from 'riot-observable';
 
 const initialState = {

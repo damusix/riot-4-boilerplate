@@ -1,21 +1,14 @@
-import * as riot from 'riot';
-import events from 'bianco.events';
-import { getState } from 'riot-meiosis';
+import { register, component } from 'riot';
+import { getStream, RMDevTools, connect } from 'riot-meiosis';
+import { Route, Router } from '@riotjs/route'
 
-import { debounce } from './utils';
-import storage from './utils/storage';
+import storage from '#/storage';
+import './store';
 
-
-// Import route helpers for Riot
-import RouterRules from './router/rules';
-import { routerStart } from './router';
-import { screenChecks } from './actions';
 
 // Import main riot app
 import App from './app.riot';
 import NotFound from './404.riot';
-
-import './store';
 
 // Import sass entrypoint
 import './app.sass';
@@ -23,29 +16,28 @@ import './app.sass';
 // Import everything inside components
 import './components';
 
+import * as actions from './actions';
+
+const stream = getStream();
+
 if (storage.length) {
 
     const storageState = storage
         .map((key, val) => ({ [key]: val }))
         .reduce((acc, cur) => Object.assign(acc,cur), {});
 
-    StateManager.mergeState(storageState);
+    stream.push(storageState);
 }
 
-// Run screens action for mobile checks
-screenChecks();
+console.log(RMDevTools);
 
-// Start router
-routerStart();
+[
+    ['router', Router],
+    ['route', Route],
+    ['not-found', NotFound],
+    ['app', App],
+    ['rmdevtools', RMDevTools({ getStream, connect })],
+].forEach((args) => register(...args));
 
-// Rerun screen checks on resize
-events.add(global.window, 'resize', debounce(screenChecks, 100));
-
-RouterRules(getState());
-
-riot.register('not-found', NotFound);
-
-// Mount the App
-const mountApp = riot.component(App);
-
+const mountApp = component(App);
 mountApp(document.getElementById('root'));

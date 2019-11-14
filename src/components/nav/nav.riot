@@ -1,30 +1,29 @@
 <app-nav>
 
-
     <nav id="left" class="col w-50">
         <a href="/"><img src="https://riot.js.org/img/logo/riot-logo.svg" /></a>
-        <a href="/example" class="{ activeOn('example') }">Example</a>
-        <a href="/try-this" class="{ activeOn('try-this') }">Try this!</a>
+        <a href="/example">Example</a>
+        <a href="/try-this">Try this!</a>
     </nav>
 
     <nav id="right" class="col w-50 text-right">
-        <a if={ !state.authenticated } href="/login" class="{ activeOn('auth.login') }">Login</a>
-        <a if={ !state.authenticated } href="/register" class="{ activeOn('auth.register') }">Register</a>
+        <a if={ !state.authenticated } href="/login">Login</a>
+        <a if={ !state.authenticated } href="/register">Register</a>
         <a if={ state.authenticated }
-           onclick={ actions.auth.logout }
-           disabled={ state.loading }
+        onclick={ actions.auth.logout }
+        disabled={ state.loading }
         >
             <i class="fas { buttonIcon() }"></i>
             Logout
         </a>
     </nav>
 
+
     <script>
 
         import { connect } from 'riot-meiosis';
-        import withRouter from '../../router/withRouter';
 
-        export default withRouter(connect(state => state)({
+        export default connect(state => state)({
 
             buttonIcon() {
 
@@ -36,6 +35,6 @@
                 return 'fa-sign-out-alt'
             },
 
-        }))
+        })
     </script>
 </app-nav>
