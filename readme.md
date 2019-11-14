@@ -7,26 +7,23 @@ Starting point for working with Riot 4. This boilerplate comes with:
 - [AnimeJS](https://animejs.com)
 - [Fontawesome 5](http://fontawesome.io)
 - [AxiosJS](https://github.com/axios/axios)
-- Streaming state management using [Erre](https://github.com/GianlucaGuarini/erre)
-- Routing using [Router5](https://router5.js.org)
+- [Riot Meiosis](https://github.com/damusix/riot-meiosis)
+- [Riot Route]((https://github.com/riot/route/tree/dev).)
 - Webpack Hot reloading
 
 ## Table of Contents
 
 * [Usage](#usage)
+* [Shortcuts](#shortcuts)
 * [Structure](#structure)
-    * [State](#state)
+    * [State Management](#state-management)
     * [Router](#router)
-        * [Route states](#route-states)
-        * [Route Helpers](#route-helpers)
     * [Components](#components)
-    * [Riot Templates](#riot-templates)
     * [Actions](#actions)
-        * [src/actions.js](#srcactionsjs)
-        * [src/components/actions.js](#srccomponentsactionsjs)
-        * [src/components/users/actions.js](#srccomponentsusersactionsjs)
     * [SASS Structure](#sass-structure)
+    * [Tests](#tests)
 * [TODO](#todo)
+
 
 ---
 
@@ -43,6 +40,32 @@ open http://localhost:3000
 Build assets into `public/` folder:
 ```
 npm run build
+```
+
+## Shortcuts
+
+- `~/*`
+    - `src/*`
+- `+/*`
+    - `src/shared/*`
+- `@/*`
+    - `src/components/*`
+- `#/*`
+    - `src/utils/*`
+
+```js
+
+// "~" is "./src"
+import Store from "~/store"
+
+// "+" is "./src/shared"
+import Alerts from "+/alerts/Alerts"
+
+// "@" is "./src/components"
+import TestStuff from "@/test.riot";
+
+// "#" is "./src/utils"
+import KeyCodes from "#/keycodes";
 ```
 
 ## Structure
