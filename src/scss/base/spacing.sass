@@ -8,8 +8,9 @@ li
 fieldset,
 input,
 select,
-textarea
-	margin-bottom: 1.5rem
+textarea,
+.field
+	margin-bottom: 1rem
 
 blockquote,
 dl,
@@ -25,3 +26,12 @@ ul,
 hr
 	margin-top: 2rem
 	margin-bottom: 2rem
+
+
+@include paddings("sm", 0.5rem)
+@include paddings("md", 1rem)
+@include paddings("lg", 2rem)
+
+@include margins("sm", 0.5rem)
+@include margins("md", 1rem)
+@include margins("lg", 2rem)

@@ -1,7 +1,5 @@
 import { getStream } from 'riot-meiosis';
 
-import ScrollLinks from './links/scroll';
-
 const stream = getStream();
 
 export const componentAction = (status) => {

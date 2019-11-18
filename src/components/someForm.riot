@@ -1,0 +1,81 @@
+<some-form>
+
+    <form class='grid wrap'>
+
+        <div class="field col w-70 pr-md">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
+            <div class="error"></div>
+        </div>
+        <div class="field col w-30">
+            <label for="age">Age</label>
+            <input type="text" id="age" name="age" />
+            <div class="error"></div>
+        </div>
+        <div class="field col w-100">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" />
+            <div class="error"></div>
+        </div>
+
+        <div class="actions grid">
+            <div class="col w-50">
+                <button type='reset'>Reset</button>
+            </div>
+            <div class="col w-50 text-right">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+
+        import { connect, getState } from 'riot-meiosis';
+        import withFinalForm from 'riot-final-form';
+
+        const mapToState = (appState, ownState) => ({
+            ...ownState,
+            ...appState
+        });
+
+        const component = withFinalForm({
+            formElement() {
+                return this.$('form');
+            },
+            onSubmit(values) {
+                $api.post('/stuff', values);
+            },
+            initialValues: {
+                name: '',
+                age: null,
+                address: ''
+            },
+            validate(values) {
+                const errors = {};
+                if (!values.name) errors.name = 'name is required';
+                if (!values.age) errors.age = 'age is required';
+                if (!/^\d+$/.test(values.age)) errors.age = 'age must be a number';
+                return errors;
+            },
+            onFormChange({ valid }) {
+
+                const submit = this.formElement().querySelector('[type=submit]');
+                submit.disabled = !valid;
+            },
+            onFieldChange(field, { touched, error }) {
+
+                const errorEl = field.parentElement.querySelector('.error');
+
+                if (touched && error) {
+                    if (errorEl) errorEl.innerHTML = error;
+                    field.parentElement.classList.add('error');
+                } else {
+                    if (errorEl) errorEl.innerHTML = '';
+                    field.parentElement.classList.remove('error');
+                }
+            }
+        });
+
+        export default connect(mapToState)(component);
+    </script>
+</some-form>

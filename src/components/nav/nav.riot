@@ -3,6 +3,7 @@
     <nav id="left" class="col w-50">
         <a href="/"><img src="https://riot.js.org/img/logo/riot-logo.svg" /></a>
         <a href="/example">Example</a>
+        <a href="/form">Some Form</a>
         <a href="/try-this">Try this!</a>
     </nav>
 
@@ -10,8 +11,8 @@
         <a if={ !state.authenticated } href="/login">Login</a>
         <a if={ !state.authenticated } href="/register">Register</a>
         <a if={ state.authenticated }
-        onclick={ actions.auth.logout }
-        disabled={ state.loading }
+            onclick={ actions.auth.logout }
+            disabled={ state.loading }
         >
             <i class="fas { buttonIcon() }"></i>
             Logout

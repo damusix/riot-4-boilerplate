@@ -18,7 +18,7 @@ select
 	background-color: transparent
 	border: .1rem solid $tertiary
 	border-radius: .4rem
-	box-shadow: 0px 0px 0px 0 rgba($primary, 25%)
+	box-shadow: 0px 0px 0px 0 rgba($tertiary, 25%)
 	box-sizing: inherit // Forced to replace inherit values of the normalize.css
 	height: 3.8rem
 	padding: .6rem 1.0rem // The .6rem vertically centers text on FF, ignored by Webkit
@@ -33,7 +33,7 @@ select
 		box-shadow: 0px 0px 7px 0 rgba(#444, 0.5)
 
 	&:focus
-		border-color: mix($primary, $tertiary, 30%)
+		border-color: $quaternary
 		outline: 0
 
 	&:disabled
