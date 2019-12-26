@@ -1,0 +1,3 @@
+aws_region = "us-east-1"
+domain_name = "example.com"
+hosted_zone = "example.com"

@@ -529,7 +529,7 @@ select {
   background-color: transparent;
   border: 0.1rem solid #D5D5D5;
   border-radius: .4rem;
-  box-shadow: 0px 0px 0px 0 #fe0000;
+  box-shadow: 0px 0px 0px 0 #d5d5d5;
   box-sizing: inherit;
   height: 3.8rem;
   padding: .6rem 1.0rem;
@@ -601,7 +601,7 @@ select {
   input:not([type]):focus,
   textarea:focus,
   select:focus {
-    border-color: #e19595;
+    border-color: #4A4A4A;
     outline: 0; }
   input[type='email']:disabled, input[type='email']:disabled:focus, input[type='email']:disabled:hover,
   input[type='number']:disabled,
@@ -691,7 +691,7 @@ input[type='radio'] {
     color: rgba(51, 153, 51, 0.35); }
   .field.success input:focus, .field.success select:focus, .field.success textarea:focus {
     background: #f5faf5;
-    border-color: #5cad5c; }
+    border-color: #99cc99; }
   .field.success input:disabled, .field.success input:disabled:focus, .field.success input:disabled:hover, .field.success select:disabled, .field.success select:disabled:focus, .field.success select:disabled:hover, .field.success textarea:disabled, .field.success textarea:disabled:focus, .field.success textarea:disabled:hover {
     background: #dbe6db;
     border-color: #92a792; }
@@ -704,7 +704,7 @@ input[type='radio'] {
     color: rgba(153, 51, 51, 0.35); }
   .field.error input:focus, .field.error select:focus, .field.error textarea:focus {
     background: #faf5f5;
-    border-color: #ad5c5c; }
+    border-color: #cc9999; }
   .field.error input:disabled, .field.error input:disabled:focus, .field.error input:disabled:hover, .field.error select:disabled, .field.error select:disabled:focus, .field.error select:disabled:hover, .field.error textarea:disabled, .field.error textarea:disabled:focus, .field.error textarea:disabled:hover {
     background: #e6dbdb;
     border-color: #a79292; }
@@ -717,7 +717,7 @@ input[type='radio'] {
     color: rgba(153, 153, 51, 0.35); }
   .field.warning input:focus, .field.warning select:focus, .field.warning textarea:focus {
     background: #fafaf5;
-    border-color: #adad5c; }
+    border-color: #cccc99; }
   .field.warning input:disabled, .field.warning input:disabled:focus, .field.warning input:disabled:hover, .field.warning select:disabled, .field.warning select:disabled:focus, .field.warning select:disabled:hover, .field.warning textarea:disabled, .field.warning textarea:disabled:focus, .field.warning textarea:disabled:hover {
     background: #e6e6db;
     border-color: #a7a792; }
@@ -730,7 +730,7 @@ input[type='radio'] {
     color: rgba(51, 51, 153, 0.35); }
   .field.info input:focus, .field.info select:focus, .field.info textarea:focus {
     background: #f5f5fa;
-    border-color: #5c5cad; }
+    border-color: #9999cc; }
   .field.info input:disabled, .field.info input:disabled:focus, .field.info input:disabled:hover, .field.info select:disabled, .field.info select:disabled:focus, .field.info select:disabled:hover, .field.info textarea:disabled, .field.info textarea:disabled:focus, .field.info textarea:disabled:hover {
     background: #dbdbe6;
     border-color: #9292a7; }
@@ -745,8 +745,9 @@ li {
 fieldset,
 input,
 select,
-textarea {
-  margin-bottom: 1.5rem; }
+textarea,
+.field {
+  margin-bottom: 1rem; }
 
 blockquote,
 dl,
@@ -761,6 +762,96 @@ ul {
 
 hr {
   margin-top: 2rem;
+  margin-bottom: 2rem; }
+
+.p-sm {
+  padding: 0.5rem; }
+
+.pr-sm {
+  padding-right: 0.5rem; }
+
+.pl-sm {
+  padding-left: 0.5rem; }
+
+.pt-sm {
+  padding-top: 0.5rem; }
+
+.pb-sm {
+  padding-bottom: 0.5rem; }
+
+.p-md {
+  padding: 1rem; }
+
+.pr-md {
+  padding-right: 1rem; }
+
+.pl-md {
+  padding-left: 1rem; }
+
+.pt-md {
+  padding-top: 1rem; }
+
+.pb-md {
+  padding-bottom: 1rem; }
+
+.p-lg {
+  padding: 2rem; }
+
+.pr-lg {
+  padding-right: 2rem; }
+
+.pl-lg {
+  padding-left: 2rem; }
+
+.pt-lg {
+  padding-top: 2rem; }
+
+.pb-lg {
+  padding-bottom: 2rem; }
+
+.m-sm {
+  margin: 0.5rem; }
+
+.mr-sm {
+  margin-right: 0.5rem; }
+
+.ml-sm {
+  margin-left: 0.5rem; }
+
+.mt-sm {
+  margin-top: 0.5rem; }
+
+.mb-sm {
+  margin-bottom: 0.5rem; }
+
+.m-md {
+  margin: 1rem; }
+
+.mr-md {
+  margin-right: 1rem; }
+
+.ml-md {
+  margin-left: 1rem; }
+
+.mt-md {
+  margin-top: 1rem; }
+
+.mb-md {
+  margin-bottom: 1rem; }
+
+.m-lg {
+  margin: 2rem; }
+
+.mr-lg {
+  margin-right: 2rem; }
+
+.ml-lg {
+  margin-left: 2rem; }
+
+.mt-lg {
+  margin-top: 2rem; }
+
+.mb-lg {
   margin-bottom: 2rem; }
 
 a {
@@ -948,6 +1039,9 @@ h6 {
     .grid .col.w-25 {
       flex: 0 0 25%;
       max-width: 25%; }
+    .grid .col.w-30 {
+      flex: 0 0 30%;
+      max-width: 30%; }
     .grid .col.w-33, .grid .col.w-34 {
       flex: 0 0 33.3333%;
       max-width: 33.3333%; }
@@ -963,6 +1057,9 @@ h6 {
     .grid .col.w-66, .grid .col.w-67 {
       flex: 0 0 66.6666%;
       max-width: 66.6666%; }
+    .grid .col.w-70 {
+      flex: 0 0 70%;
+      max-width: 70%; }
     .grid .col.w-75 {
       flex: 0 0 75%;
       max-width: 75%; }
@@ -1016,6 +1113,9 @@ h6 {
       .grid .col.mobile-w-25 {
         flex: 0 0 25%;
         max-width: 25%; }
+      .grid .col.mobile-w-30 {
+        flex: 0 0 30%;
+        max-width: 30%; }
       .grid .col.mobile-w-33, .grid .col.mobile-w-34 {
         flex: 0 0 33.3333%;
         max-width: 33.3333%; }
@@ -1031,6 +1131,9 @@ h6 {
       .grid .col.mobile-w-66, .grid .col.mobile-w-67 {
         flex: 0 0 66.6666%;
         max-width: 66.6666%; }
+      .grid .col.mobile-w-70 {
+        flex: 0 0 70%;
+        max-width: 70%; }
       .grid .col.mobile-w-75 {
         flex: 0 0 75%;
         max-width: 75%; }
@@ -1104,34 +1207,6 @@ app-nav {
 example {
   display: block;
   outline: none; }
-
-current-state {
-  display: block;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 400px;
-  height: 400px;
-  overflow: auto;
-  background: #eee;
-  padding: 2rem;
-  transition: all 250ms; }
-  current-state .toggle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0.25rem;
-    background: #ccc; }
-  current-state.closed {
-    width: 150px;
-    height: 1.5rem;
-    padding: 0;
-    overflow: hidden; }
-    current-state.closed h3 {
-      font-size: 1rem;
-      position: absolute;
-      top: 0;
-      right: 10px; }
 
 #root {
   padding: 2rem;

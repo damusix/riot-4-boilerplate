@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --inline --watch --hot --colors -d --port 3000",
     "build": "webpack",
     "test": "jest",
-    "tdd": "jest --watch"
+    "tdd": "jest --watch",
+    "deploy": "./deploy/deploy.sh"
   },
   "keywords": [
     "riot4",

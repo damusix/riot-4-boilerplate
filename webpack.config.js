@@ -4,7 +4,7 @@ const { DefinePlugin } = require('webpack');
 
 const paths = {
     app: Path.resolve(__dirname, 'src'),
-    public: Path.resolve(__dirname, 'public')
+    assets: Path.resolve(__dirname, 'assets')
 };
 
 const mode = ['production', 'development'].includes(process.env.NODE_ENV)
@@ -26,7 +26,8 @@ module.exports = {
         historyApiFallback: {
             index: 'index.html'
         },
-        hot: true
+        hot: true,
+        open: true
     },
     resolve: {
 
@@ -38,8 +39,8 @@ module.exports = {
         },
     },
     output: {
-        path: paths.public,
-        publicPath: '/public/',
+        path: paths.assets,
+        publicPath: '/assets/',
         filename: 'app.js'
     },
     devtool: 'source-map',
