@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Deployment · Riot 4 SPA Boilerplate</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This project comes with a simple terraform infrastructure setup, and AWS deploy script."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Deployment · Riot 4 SPA Boilerplate"/><meta property="og:type" content="website"/><meta property="og:url" content="https://damusix.github.io/riot-4-boilerplate/"/><meta property="og:description" content="This project comes with a simple terraform infrastructure setup, and AWS deploy script."/><meta property="og:image" content="https://damusix.github.io/riot-4-boilerplate/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://damusix.github.io/riot-4-boilerplate/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/riot-4-boilerplate/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://damusix.github.io/riot-4-boilerplate/blog/atom.xml" title="Riot 4 SPA Boilerplate Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://damusix.github.io/riot-4-boilerplate/blog/feed.xml" title="Riot 4 SPA Boilerplate Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/riot-4-boilerplate/js/scrollSpy.js"></script><link rel="stylesheet" href="/riot-4-boilerplate/css/main.css"/><script src="/riot-4-boilerplate/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/riot-4-boilerplate/"><img class="logo" src="/riot-4-boilerplate/img/favicon.ico" alt="Riot 4 SPA Boilerplate"/><h2 class="headerTitleWithLogo">Riot 4 SPA Boilerplate</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/riot-4-boilerplate/docs/get-started" target="_self">Get Started</a></li><li class="siteNavGroupActive"><a href="/riot-4-boilerplate/docs/setup" target="_self">Docs</a></li><li class=""><a href="/riot-4-boilerplate/help" target="_self">Help</a></li><li class=""><a href="/riot-4-boilerplate/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Components</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Components</h3><ul class=""><li class="navListItem"><a class="navItem" href="/riot-4-boilerplate/docs/setup">Setup</a></li><li class="navListItem"><a class="navItem" href="/riot-4-boilerplate/docs/routes">Routes</a></li><li class="navListItem"><a class="navItem" href="/riot-4-boilerplate/docs/components">Components</a></li><li class="navListItem"><a class="navItem" href="/riot-4-boilerplate/docs/styles">Styles and SASS</a></li><li class="navListItem"><a class="navItem" href="/riot-4-boilerplate/docs/actions">Actions</a></li><li class="navListItem"><a class="navItem" href="/riot-4-boilerplate/docs/tests">Tests</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/riot-4-boilerplate/docs/deployment">Deployment</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Utilities</h3><ul class=""><li class="navListItem"><a class="navItem" href="/riot-4-boilerplate/docs/events">Events</a></li><li class="navListItem"><a class="navItem" href="/riot-4-boilerplate/docs/storage">Storage</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Deployment</h1></header><article><div><span><p>This project comes with a simple terraform infrastructure setup, and AWS deploy script.</p>
+<h2><a class="anchor" aria-hidden="true" id="prerequisites"></a><a href="#prerequisites" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prerequisites</h2>
+<p>In order for deployments to work you need to have <code>terraform</code> and <code>aws-cli</code> setup in your bash. You also need a domain name configured with a route53 zone.</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv1.html">Install AWS CLI</a></li>
+<li><a href="https://learn.hashicorp.com/terraform/getting-started/install.html">Install Terraform version 12.18</a></li>
+<li><a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html#cli-quick-configuration">Setup your AWS credentials</a></li>
+<li><a href="https://www.youtube.com/watch?v=HwZ3wNaM69s">Create a Route53 Zone</a></li>
+</ul>
+<blockquote>
+<p>This deployment has only been tested with <code>Terraform v0.12.18</code> and <code>aws-cli/1.16.309 Python/2.7.17rc1 Linux/5.3.0-20-generic botocore/1.13.45</code></p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="setup-terraform"></a><a href="#setup-terraform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setup Terraform</h2>
+<p>Before we get started, we need to setup some terraform files in order to build our infrastructure. There is a <code>project.auto.tfvars.sample</code> located at the root of the project. Rename this file to <code>project.auto.tfvars</code> and lets get started.</p>
+<p>In <code>project.auto.tfvars</code> you should find the following:</p>
+<pre><code class="hljs css language-tf"><span class="hljs-attr">aws_region</span> = <span class="hljs-string">"us-east-1"</span>
+<span class="hljs-attr">domain_name</span> = <span class="hljs-string">"app.example.com"</span>
+<span class="hljs-attr">hosted_zone</span> = <span class="hljs-string">"example.com"</span>
+</code></pre>
+<ol>
+<li>Change <code>hosted_zone</code> to whatever your hosted zone name is.</li>
+<li>Change <code>domain_name</code> to whatever you app's domain is going to be. This will also be the name of your bucket, so make sure it doesn't already exist.</li>
+<li>Save the file</li>
+</ol>
+<p>Now you should be ready to deploy your infrastructure. This implicates that you will create and incur the costs of the following AWS resources:</p>
+<ul>
+<li>S3 Bucket</li>
+<li>Cloudfront Distribution</li>
+<li>ACM SSL Certificate</li>
+</ul>
+<blockquote>
+<p>Don't worry, this will not be anywere near expensive unless you have a wildly popular site. Think $1 or $2 per month.</p>
+</blockquote>
+<blockquote>
+<p>Cloudfront only uses certificates from <code>us-east-1</code> so do NOT change the <code>aws_region</code> unless you know what you're doing.</p>
+</blockquote>
+<p>To deploy your infrastructure, run the following commands</p>
+<pre><code class="hljs css language-bash">terraform init
+terraform apply
+</code></pre>
+<p>It may take up to 30 minutes to initially setup your infrastructure (cloudfront takes forever to create).</p>
+<p>Once your infrastructure is done, you should have some kind of output in your terminal:</p>
+<pre><code class="hljs css language-bash">
+Apply complete! Resources: X added, X changed, X destroyed.
+
+Outputs:
+
+bucket_name = app.example.com
+certificate_arn = arn:aws:acm:us-east-1:1234567890:certificate/11111111-2222-2222-2222-3333333333333
+distribution_id = ABCDE1234FG56H
+
+</code></pre>
+<p>In the root of your project, rename <code>sample.env</code> to <code>.env</code>. Copy <code>distribution_id</code> and <code>bucket_name</code> and paste them in their respective variable names. This will be used for deployment later on.</p>
+<h2><a class="anchor" aria-hidden="true" id="deploying-to-aws"></a><a href="#deploying-to-aws" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deploying to AWS</h2>
+<p>After your project is ready to be published, deployment should be as easy as:</p>
+<pre><code class="hljs css language-bash">npm run deploy
+</code></pre>
+<p>This will run tests, export <code>.env</code>, upload files to s3, and create a cloudfront invalidation. You app should be live within 5 minutes!</p>
+<h2><a class="anchor" aria-hidden="true" id="deploy-using-docker"></a><a href="#deploy-using-docker" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deploy using Docker</h2>
+<p>The project also comes with a <code>Dockerfile</code> that builds and creates an NGINX image. All it does is server static files using nginx.</p>
+<pre><code class="hljs css language-bash">docker build --rm -t riotapp:latest .
+docker run -p 3000:80 riotapp:latest
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/riot-4-boilerplate/docs/tests"><span class="arrow-prev">← </span><span>Tests</span></a><a class="docs-next button" href="/riot-4-boilerplate/docs/events"><span>Events</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#setup-terraform">Setup Terraform</a></li><li><a href="#deploying-to-aws">Deploying to AWS</a></li><li><a href="#deploy-using-docker">Deploy using Docker</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/riot-4-boilerplate/" class="nav-home"><img src="/riot-4-boilerplate/img/favicon.ico" alt="Riot 4 SPA Boilerplate" width="66" height="58"/></a><div><h5>Docs</h5><a href="/riot-4-boilerplate/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/riot-4-boilerplate/docs/en/doc2.html">Guides (or other categories)</a><a href="/riot-4-boilerplate/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/riot-4-boilerplate/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/riot-4-boilerplate/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/riot-4-boilerplate/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Danilo Alonso.</section></footer></div></body></html>
