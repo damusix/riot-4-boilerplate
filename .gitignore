@@ -65,3 +65,12 @@ mochawesome-report
 
 
 .DS_Store
+
+# Ignored for boilerplate website files
+website
+
+# Terraform
+.terraform
+*.tfvars
+*.tfstate
+*.tfstate*

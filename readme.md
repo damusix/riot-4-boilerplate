@@ -7,9 +7,11 @@ Starting point for working with Riot 4. This boilerplate comes with:
 - [AnimeJS](https://animejs.com)
 - [Fontawesome 5](http://fontawesome.io)
 - [AxiosJS](https://github.com/axios/axios)
+- [Final Form](https://final-form.org/) + [Riot Final Form](https://github.com/damusix/riot-final-form)
 - [Riot Meiosis](https://github.com/damusix/riot-meiosis)
 - [Riot Route]((https://github.com/riot/route/tree/dev).)
 - Webpack Hot reloading
+- [Jest](https://jestjs.io/)
 
 ## Table of Contents
 
@@ -78,6 +80,9 @@ State is initialized in `src/store.js` and uses [riot-meiosis](https://github.co
 
 Router is based on [riot route (dev branch)](https://github.com/riot/route/tree/dev).
 
+### Forms and Form Management
+
+Forms can be handled using `final-form` with `riot-final-form`. And example is shown in `src/components/someForm.riot`. Check out [Riot Final Form](https://github.com/damusix/riot-final-form) readme for more information on how to use it.
 
 ### Components
 
@@ -130,7 +135,7 @@ Components' styles are stored in `src/components/{componentName}/style.sass`. Th
 
 ### Tests
 
-Test with Jest using `jsdom`. See `src/__tests__/store.js` for an example of module tests and `src/components/__tests__/test.riot.js` for an example of component tests.
+Test with `Jest` using `jsdom`. See `src/__tests__/store.js` for an example of module tests and `src/components/__tests__/test.riot.js` for an example of component tests.
 
 ## TODO
 - [x] Router mechanism

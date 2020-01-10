@@ -5,30 +5,23 @@ import { Route, Router } from '@riotjs/route'
 import storage from '#/storage';
 import './store';
 
-
-// Import main riot app
-import App from './app.riot';
-import NotFound from './404.riot';
-
-// Import sass entrypoint
+// SASS entrypoint
 import './app.sass';
 
-// Import everything inside components
+// Call components
 import './components';
+
+// Call shared
+import './shared';
 
 // Initialize actions
 import './actions';
 
-const stream = getStream();
 
-if (storage.length) {
+// Base components
+import App from './app.riot';
+import NotFound from './404.riot';
 
-    const storageState = storage
-        .map((key, val) => ({ [key]: val }))
-        .reduce((acc, cur) => Object.assign(acc,cur), {});
-
-    stream.push(storageState);
-}
 
 [
     ['router', Router],

@@ -16,4 +16,16 @@ const reducer = (newState, oldState) => ({
 
 createStream(reducer, initialState);
 
+const stream = getStream();
+
+if (storage.length) {
+
+    const storageState = storage
+        .map((key, val) => ({ [key]: val }))
+        .reduce((acc, cur) => Object.assign(acc,cur), {});
+
+    stream.push(storageState);
+}
+
+
 export const events = Observable();
