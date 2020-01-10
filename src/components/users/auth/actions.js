@@ -1,4 +1,4 @@
-import { getStream } from 'riot-meiosis';
+import { getStream, getState } from 'riot-meiosis';
 
 import storage from '../../../utils/storage';
 
@@ -7,9 +7,10 @@ const stream = getStream();
 
 export function redirectHomeIfAuth() {
 
-    if (state().authenticated) {
+    if (getState().authenticated) {
 
-        actions.navigate('home');
+        // actions.navigate('home');
+        console.log('should redirect home')
     }
 };
 
@@ -27,7 +28,8 @@ export function login(payload) {
 
         storage.set('authenticated', true);
 
-        actions.navigate('home');
+        // actions.navigate('home');
+        console.log('should redirect home')
     }, 1000);
 };
 
@@ -44,8 +46,6 @@ export function register(payload) {
         });
 
         storage.set('authenticated', true);
-
-        actions.navigate('home');
     }, 1000);
 };
 
@@ -59,9 +59,9 @@ export function logout() {
             authenticated: false,
             loading: false
         });
-        storage.rmv('authenticated');
 
-        actions.navigate('auth.login');
+        storage.rmv('authenticated');
+        console.log('should redirect home')
     }, 1000);
 };
 

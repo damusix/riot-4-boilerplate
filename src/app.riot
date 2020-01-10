@@ -1,17 +1,10 @@
 <app>
-
-
     <router>
         <app-nav class="grid" />
 
-        <route path="/auth/:action">
-            <section id="auth">
-
-                <route path="/auth/login"><login } /></route>
-                <route path="/auth/register"><register /></route>
-                <route path="/auth/reset"><reset-password-request /></route>
-            </section>
-        </route>
+        <route path="/auth/login"><login /></route>
+        <route path="/auth/register"><register /></route>
+        <route path="/auth/reset"><reset-password-request /></route>
 
         <route path="/"><comes-with /></route>
         <route path="/form"><some-form /></route>
