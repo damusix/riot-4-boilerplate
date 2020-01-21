@@ -1,5 +1,6 @@
 import { createStream, getStream } from 'riot-meiosis';
 import Observable from 'riot-observable';
+import storage from '#/storage';
 
 const initialState = {
     componentAction: '',
