@@ -2,7 +2,6 @@ import { register, component } from 'riot';
 import { getStream, RMDevTools, connect } from 'riot-meiosis';
 import { Route, Router } from '@riotjs/route'
 
-import storage from '#/storage';
 import './store';
 
 // SASS entrypoint
