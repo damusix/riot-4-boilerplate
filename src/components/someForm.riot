@@ -23,7 +23,7 @@
                 <button type='reset'>Reset</button>
             </div>
             <div class="col w-50 text-right">
-                <button type="submit">Submit</button>
+                <button type="submit" class='primary'>Submit</button>
             </div>
         </div>
     </form>
@@ -43,7 +43,7 @@
                 return this.$('form');
             },
             onSubmit(values) {
-                $api.post('/stuff', values);
+                alert(`$api.post('/stuff', ${JSON.stringify(values)})`);
             },
             initialValues: {
                 name: '',

@@ -25,7 +25,8 @@ input[type='submit']
 		box-shadow: 0 0 7px 0 rgba(#000, 0.5)
 
 
-	@include button("&", $primary, #fff)
+	@include button("&", lighten($quaternary, 25%), #fff)
+	@include button("&.primary", $primary, #fff)
 	@include button("&.success", $success, #fff)
 	@include button("&.error", $error, #fff)
 	@include button("&.warning", $warning, #fff)

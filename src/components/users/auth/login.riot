@@ -1,28 +1,43 @@
 <login>
 
-    <form onsubmit={ onSubmit }>
+    <div class="grid center">
 
-        <div class="field">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" />
+        <div class="col w-50">
+
+            <form onsubmit={ onSubmit }>
+
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" />
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" />
+                </div>
+
+                <div class="field text-right">
+
+                    <button disabled={ state.loading }>
+                        <i class="fas { buttonIcon() }"></i>
+                        Login
+                    </button>
+                </div>
+
+                <hr>
+
+                <auth-links login={ true } />
+
+            </form>
         </div>
+    </div>
 
-        <div class="field">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" />
-        </div>
-
-        <button disabled={ state.loading }>
-            <i class="fas { buttonIcon() }"></i>
-            Login
-        </button>
-
-        <hr>
-
-        <auth-links login={ true } />
-
-    </form>
-
+    <style>
+        :host .col {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    </style>
 
     <script>
         import { connect } from 'riot-meiosis';
@@ -58,4 +73,5 @@
             }
         });
     </script>
+
 </login>
