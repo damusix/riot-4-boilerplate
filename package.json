@@ -31,7 +31,7 @@
     "@riotjs/ssr": "^4",
     "@riotjs/webpack-loader": "^4",
     "animejs": "^3",
-    "axios": "^0.19",
+    "axios": "^0.21",
     "babel-loader": "^8",
     "better-web-storage": "^0.1",
     "bianco": "^1",
